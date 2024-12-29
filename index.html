@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Descargador de Música</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #121212;
+            color: white;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+            background-color: #282828;
+            color: white;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #1DB954;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #1ed760;
+        }
+        #status {
+            margin-top: 20px;
+            color: #1DB954;
+        }
+        #albumCover {
+            max-width: 300px;
+            margin: 20px auto;
+            display: none;
+        }
+        #downloadButton {
+            display: none;
+        }
+        .config-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #282828;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+        }
+        .modal-content {
+            background-color: #282828;
+            margin: 15% auto;
+            padding: 20px;
+            width: 70%;
+            border-radius: 10px;
+        }
+        .download-path {
+            background-color: #121212;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            word-break: break-all;
+        }
+        .close {
+            float: right;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        .close:hover {
+            color: #1DB954;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="config-button" onclick="openConfig()">⚙️ Configuración</button>
+        <h1>Descargador de Música</h1>
+        <input type="text" id="songInput" placeholder="Introduce el nombre de la canción">
+        <button onclick="searchSong()">Buscar</button>
+        <img id="albumCover" src="" alt="Portada del Álbum">
+        <button id="downloadButton" onclick="downloadSong()">Descargar</button>
+        <div id="status"></div>
+    </div>
+
+    <div id="configModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeConfig()">&times;</span>
+            <h2>Configuración</h2>
+            <p>Directorio de descarga:</p>
+            <div id="downloadPath" class="download-path">No seleccionado</div>
+            <button onclick="selectDirectory()">Seleccionar directorio</button>
+        </div>
+    </div>
+
+    <script src="src/renderer/renderer.js"></script>
+</body>
+</html> 
